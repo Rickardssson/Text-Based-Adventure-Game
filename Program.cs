@@ -63,17 +63,17 @@
             Console.WriteLine("We don't have that so have this instead.");
         }
 
-        Console.WriteLine("\nThe bartender hands you a shot of some indistinguishable liquid.");
+        Console.WriteLine("The bartender hands you a shot of some indistinguishable liquid.");
                 
         if (AskYesOrNo("Do you want to drink the shot? "))
         {
             player.Courage += 5;
-            Console.WriteLine("You gained 5 Courage and an empty shot glass!");
             player.Items.Add("Empty Shot Glass");
+            Console.WriteLine("You gained 5 Courage and an empty shot glass!");
         } else
         {
-            Console.WriteLine("You gained a shot!");
             player.Items.Add("Shot");
+            Console.WriteLine("You gained a shot!");
         }
         
         // To stop program from spamming text
@@ -108,5 +108,4 @@
             }
         }
     }
-        
 }
