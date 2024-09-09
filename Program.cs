@@ -79,11 +79,11 @@
         if (AskYesOrNo("Do you want to drink the shot? "))
         {
             player.Courage += 5;
-            Console.WriteLine("You gained 5 Courage and an empty shot glass!")
+            Console.WriteLine("You gained 5 Courage and an empty shot glass!");
             player.Items.Add("Empty Shot Glass");
         } else
         {
-            Console.WriteLine("You gained a shot!")
+            Console.WriteLine("You gained a shot!"):
             player.Items.Add("Shot");
         }
         
