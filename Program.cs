@@ -42,23 +42,12 @@
             name = Ask("What's your name kid? ");
         } while (!AskYesOrNo($"{name} is it? "));
 
-        int initialPopularity = 0;
-        do
+        int initialPopularity;
+
+        while (!int.TryParse(Ask("How many friends did you come with? "), out initialPopularity))
         {
-            try
-            {
-                initialPopularity = int.Parse(Ask("How many friends did you come with? "));
-                if (initialPopularity == 0)
-                {
-                    //
-                    initialPopularity = 1;
-                }
-            }
-            catch (Exception e)
-            {
-                continue;
-            }
-        } while (initialPopularity == 0);
+            Console.WriteLine("Are you that drunk already? That is not a number.");
+        }
 
         player.Name = name;
         player.Location = "bar";
