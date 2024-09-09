@@ -19,6 +19,10 @@
             {
                 Bathroom(player);
             }
+            if (player.Location == "wardrobe")
+            {
+                Wardrobe(player);
+            }
             else
             {
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
@@ -108,7 +112,40 @@
         player.Location = GetListValue("Where do you go next? Bar or Wardrobe? ", availableLocations);
     }
 
-    
+    static void Wardrobe(Player player)
+    {
+        Console.WriteLine("You enter the wardrobe.");
+        if (player.Items.Contains("Jacket"))
+        {
+            Console.WriteLine("Nothing more to do here.");
+        }
+        else
+        {
+            Console.WriteLine("There is someone attending the wardrobe.");
+            if (AskYesOrNo("Do you want to exchange your clothes? For that you need a ticket. "))
+            {
+                if (player.Items.Contains("Wardrobe Ticket"))
+                {
+                    player.Items.Remove("Wardrobe Ticket");
+                    player.Items.Add("Jacket");
+                    player.Courage += 20;
+
+                    Console.WriteLine("You lost your ticket but gained a Jacket!");
+                    Console.WriteLine("With your new Jacket you gain 20 Courage!");
+                }
+                else
+                {
+                    Console.WriteLine("Comeback when you actually have a ticket!");
+                    player.Courage -= 1;
+                    Console.WriteLine("For lying and getting caught you lost 1 Courage");
+                }
+            }
+        }
+        
+        List<string> availableLocations = new List<string> { "dancefloor", "bathroom" };
+        
+        player.Location = GetListValue("Where do you go next? Dancefloor or Bathroom? ", availableLocations);
+    }
     
     static void ObtainShot(Player player)
     {
