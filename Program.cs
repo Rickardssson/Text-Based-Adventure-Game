@@ -9,17 +9,15 @@
             {
                 NewGame(player);
             }
-
-            if (player.Location == "bar")
+            else if (player.Location == "bar")
             {
                 Bar(player);
             }
-
-            if (player.Location == "bathroom")
+            else if (player.Location == "bathroom")
             {
                 Bathroom(player);
             }
-            if (player.Location == "wardrobe")
+            else if (player.Location == "wardrobe")
             {
                 Wardrobe(player);
             }
