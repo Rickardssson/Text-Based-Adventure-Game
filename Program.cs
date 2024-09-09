@@ -77,7 +77,7 @@
         // Taget från https://stackoverflow.com/a/723219
         List<string> availableLocations = new List<string> { "bathroom", "dancefloor" };
         
-        player.Location = GetListValue("Where do you go next? Bathroom or Dancefloor? ", availableLocations);
+        player.Location = AskBetweenOptions("Where do you go next? Bathroom or Dancefloor? ", availableLocations);
     }
 
     static void Bathroom(Player player)
@@ -92,7 +92,7 @@
             Console.WriteLine("A shady figure approaches from one of the stalls.");
             List<string> options = new List<string> { "shot", "ticket" };
             
-            string choice = GetListValue("Shot or a ticket, the choice is yours... ", options);
+            string choice = AskBetweenOptions("Shot or a ticket, the choice is yours... ", options);
             if (choice == "shot")
             {
                 ObtainShot(player);
@@ -107,7 +107,7 @@
 
         List<string> availableLocations = new List<string> { "bar", "wardrobe" };
         
-        player.Location = GetListValue("Where do you go next? Bar or Wardrobe? ", availableLocations);
+        player.Location = AskBetweenOptions("Where do you go next? Bar or Wardrobe? ", availableLocations);
     }
 
     static void Wardrobe(Player player)
@@ -142,7 +142,7 @@
         
         List<string> availableLocations = new List<string> { "dancefloor", "bathroom" };
         
-        player.Location = GetListValue("Where do you go next? Dancefloor or Bathroom? ", availableLocations);
+        player.Location = AskBetweenOptions("Where do you go next? Dancefloor or Bathroom? ", availableLocations);
     }
     
     static void ObtainShot(Player player)
@@ -164,13 +164,13 @@
         Console.WriteLine("You gained 5 Courage and an empty shot glass!");
     }
     
-    static string GetListValue(string question, List<string> list)
+    static string AskBetweenOptions(string question, List<string> options)
     {
         string returnValue = "";
         do
         {
             returnValue = Ask(question).ToLower();
-        } while(!list.Contains(returnValue));
+        } while(!options.Contains(returnValue));
 
         return returnValue;
     }
