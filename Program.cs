@@ -83,7 +83,7 @@
             player.Items.Add("Empty Shot Glass");
         } else
         {
-            Console.WriteLine("You gained a shot!"):
+            Console.WriteLine("You gained a shot!");
             player.Items.Add("Shot");
         }
         
