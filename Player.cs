@@ -6,4 +6,68 @@
     public int Courage = 50;
     public List<string> Items = new List<string>();
     public string Location = "newgame";
+
+    public void Action1(Opponent opponent)
+    {
+        Console.WriteLine($"{this.Name} used 'Modern Dance'!");
+        if (opponent.DanceType == "tiktok_dance")
+        {
+            Console.WriteLine("It's very effective!");
+            opponent.Popularity -= 5;
+            this.Popularity += 5;
+            Console.WriteLine($"5 people left {opponent.Name}'s crowd to join the crowd of {this.Name}.");
+        }
+        else if (opponent.DanceType == "breakdance")
+        {
+            Console.WriteLine("It's not very effective!");
+            opponent.Popularity += 3;
+            this.Popularity -= 3;
+            Console.WriteLine($"3 people left {this.Name}'s crowd to join the crowd of {opponent.Name}.");
+        } else
+        {
+            this.Popularity += 3;
+            Console.WriteLine($"3 people joined {this.Name}'s crowd!");
+        }
+    }
+
+    public void Action2(Opponent opponent)
+    {
+        Console.WriteLine($"{this.Name} used 'Disco Dance'!");
+        if (opponent.DanceType == "breakdance")
+        {
+            Console.WriteLine("It's very effective!");
+            opponent.Popularity -= 5;
+            this.Popularity += 5;
+            Console.WriteLine($"5 people left {opponent.Name}'s crowd to join the crowd of {this.Name}.");
+        }
+        else if (opponent.DanceType == "tiktok_dance")
+        {
+            Console.WriteLine("It's not very effective!");
+            opponent.Popularity += 3;
+            this.Popularity -= 3;
+            Console.WriteLine($"3 people left {this.Name}'s crowd to join the crowd of {opponent.Name}.");
+        } else
+        {
+            this.Popularity += 3;
+            Console.WriteLine($"3 people joined {this.Name}'s crowd!");
+        }
+    }
+
+    public void Action3(Opponent opponent)
+    {
+        if (this.Courage >= 75)
+        {
+            Console.WriteLine($"{this.Name} used 'Folk Dance'!");
+            Console.WriteLine("It's super effective!");
+            opponent.Popularity -= 5;
+            this.Popularity += 10;
+            Console.WriteLine($"5 people left {opponent.Name}'s crowd.");
+            Console.WriteLine($"10 people joined {this.Name}'s crowd!");
+        }
+        else
+        {
+            this.Popularity -= 2;
+            Console.WriteLine("You weren't courageous enough to perform and therefore 2 people left your crowd.");
+        }
+    }
 }
