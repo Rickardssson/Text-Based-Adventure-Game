@@ -58,7 +58,12 @@
             player.FinalOpponentName = "Mr. " + Console.ReadLine();
             Console.WriteLine("We don't have that so have this instead.");
         }
-
+        else
+        {
+            Console.WriteLine("You approach the bartender.");
+            Console.WriteLine("Take this, it's on the house");
+        }
+        
         Console.WriteLine("The bartender hands you a shot of some indistinguishable liquid.");
 
         ObtainShot(player);
