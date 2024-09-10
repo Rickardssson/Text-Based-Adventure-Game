@@ -26,7 +26,6 @@
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
             }
         }
-        
     }
 
     static void NewGame(Player player)
@@ -152,7 +151,7 @@
         player.Items.Add("Empty Shot Glass");
         Console.WriteLine("You gained 5 Courage and an empty shot glass!");
     }
-    
+
     static string AskBetweenOptions(string question, List<string> options)
     {
         string returnValue = "";
