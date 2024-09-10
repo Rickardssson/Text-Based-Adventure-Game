@@ -21,6 +21,10 @@
             {
                 Wardrobe(player);
             }
+            else if (player.Location == "dancefloor")
+            {
+                Dancefloor(player);
+            }
             else
             {
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
@@ -136,6 +140,32 @@
         List<string> availableLocations = new List<string> { "dancefloor", "bathroom" };
         
         player.Location = AskBetweenOptions("Where do you go next? Dancefloor or Bathroom? ", availableLocations);
+    }
+
+    static void Dancefloor(Player player)
+    {
+        Console.WriteLine("You enter the dancefloor.");
+        Console.WriteLine("A stranger challenges you to a dance off!");
+
+        if (AskYesOrNo("Do you accept the challenge? "))
+        {
+            // Trigger challenge
+        }
+
+        List<string> availableLocations = new List<string> { "bar", "wardrobe", "lounge"};
+
+        bool playerCanEnterLocation = false;
+        do
+        {
+            player.Location = AskBetweenOptions("Where do you go next? Bar, Wardrobe or Lounge (requires VIP Card)? ", availableLocations);
+            if (player.Location == "lounge" && !player.Items.Contains("VIP Card"))
+            {
+                Console.WriteLine("You do not have a VIP card.");
+                continue;
+            }
+
+            playerCanEnterLocation = true;
+        } while (!playerCanEnterLocation);
     }
     
     static void ObtainShot(Player player)
