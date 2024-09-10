@@ -63,8 +63,7 @@
         Console.WriteLine("The bartender hands you a shot of some indistinguishable liquid.");
 
         ObtainShot(player);
-        
-        // Taget från https://stackoverflow.com/a/723219
+
         List<string> availableLocations = new List<string> { "bathroom", "dancefloor" };
         
         player.Location = AskBetweenOptions("Where do you go next? Bathroom or Dancefloor? ", availableLocations);
