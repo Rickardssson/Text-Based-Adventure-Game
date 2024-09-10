@@ -1,11 +1,12 @@
 ﻿class BasicOpponent : Opponent
 {
     private Random random = new Random();
-    public BasicOpponent(string name, int popularity, int popularityDifference) : base(name, popularity, popularityDifference)
+    public BasicOpponent(string name, int popularity, int popularityDifference, string danceType) : base(name, popularity, popularityDifference, danceType)
     {
         Name = name;
         Popularity = popularity;
         PopularityDifference = popularityDifference;
+        DanceType = danceType;
     }
     public void Action1()
     {
