@@ -1,14 +1,28 @@
 ﻿class BasicOpponent : Opponent
 {
     private Random random = new Random();
-    public BasicOpponent(string name, int popularity, int popularityDifference, string danceType) : base(name, popularity, popularityDifference, danceType)
+    public BasicOpponent(string name, int popularity, int popularityDifference, string danceType, int actionAmount) : base(name, popularity, popularityDifference, danceType, actionAmount)
     {
         Name = name;
         Popularity = popularity;
         PopularityDifference = popularityDifference;
         DanceType = danceType;
+        ActionAmount = actionAmount;
     }
-    public void Action1()
+
+    public override void PickAction(Player player)
+    {
+        if (random.Next(2) == 1)
+        {
+            Action1(player);
+        }
+        else
+        {
+            Action2(player);
+        }
+    }
+    
+    public override void Action1(Player player)
     {
         Console.WriteLine($"{this.Name} used 'TikTok Dance'!");
         if (this.random.Next(2) == 1)
@@ -23,7 +37,7 @@
         }
     }
 
-    public void Action2(Player player)
+    public override void Action2(Player player)
     {
         Console.WriteLine($"{this.Name} used 'Roast Opponent'!");
 

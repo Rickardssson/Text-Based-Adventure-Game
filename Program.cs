@@ -149,7 +149,8 @@
 
         if (AskYesOrNo("Do you accept the challenge? "))
         {
-            // Trigger challenge
+            BasicOpponent opponent = new BasicOpponent("The Stranger", player.Popularity + 5, 15, "tiktok_dance", 2);
+            DanceBattle(player, opponent);
         }
 
         List<string> availableLocations = new List<string> { "bar", "wardrobe", "lounge"};
@@ -166,6 +167,50 @@
 
             playerCanEnterLocation = true;
         } while (!playerCanEnterLocation);
+    }
+
+    static void DanceBattle(Player player, Opponent opponent)
+    {
+        Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
+        do
+        {
+            opponent.PickAction(player);
+            ChoosePlayerAction(player, opponent);
+        } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
+    }
+
+    static void ChoosePlayerAction(Player player, Opponent opponent)
+    {
+        List<string> playerActions = new List<string> { "modern", "disco", "folk" };
+        Console.WriteLine("Dances: Modern | Disco | Folk");
+        string action = AskBetweenOptions("Which dance do you choose? ", playerActions);
+
+        if (action == "modern")
+        {
+            player.Action1(opponent);
+        }
+        
+        if (action == "disco")
+        {
+            player.Action2(opponent);
+        }
+        
+        if (action == "folk")
+        {
+            player.Action3(opponent);
+        }
+    }
+    
+    static int GetPositiveDifference(int x, int y)
+    {
+        if (x >= y)
+        {
+            return x - y;
+        }
+        else
+        {
+            return y - x;
+        }
     }
     
     static void ObtainShot(Player player)
