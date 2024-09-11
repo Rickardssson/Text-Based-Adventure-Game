@@ -177,10 +177,15 @@
     static void DanceBattle(Player player, Opponent opponent)
     {
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
+		Thread.Sleep(1500);
         do
         {
+			Console.WriteLine($"\n{opponent.Name}'s turn:");
             opponent.PickAction(player);
+			Thread.Sleep(1500);
+			Console.WriteLine($"\n{player.Name}'s turn:");
             ChoosePlayerAction(player, opponent);
+			Thread.Sleep(1500);
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
     }
 
