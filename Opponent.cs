@@ -18,4 +18,5 @@
     public abstract void PickAction(Player player);
     public abstract void Action1(Player player);
     public abstract void Action2(Player player);
+	public abstract void Defeat(Player player);
 }

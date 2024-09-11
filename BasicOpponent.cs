@@ -53,4 +53,17 @@
         player.Popularity -= 1;
         Console.WriteLine($"A crowd member stopped cheering for {player.Name} and started cheering for {this.Name}.");
     }
+
+    public override void Defeat(Player player)
+    {
+        if (player.Courage >= 75)
+        {
+            Console.WriteLine("Hey! You're pretty cool, the names Carl!");
+            this.Name = "Carl";
+        }
+        Console.WriteLine("You've won this battle but there is still an opponent left in the lounge! ");
+        player.Items.Add("VIP Card");
+        Console.WriteLine($"{this.Name} hands over a VIP Card.");
+        Thread.Sleep(1000);
+    }
 }

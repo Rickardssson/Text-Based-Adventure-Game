@@ -178,6 +178,7 @@
     {
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
 		Thread.Sleep(1500);
+		// Loops while the battle should be active
         do
         {
 			Console.WriteLine($"\n{opponent.Name}'s turn:");
@@ -187,6 +188,16 @@
             ChoosePlayerAction(player, opponent);
 			Thread.Sleep(1500);
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
+
+		if (player.Popularity < opponent.Popularity)
+		{
+			Console.WriteLine($"{player.Name} was deafeated by {opponent.Name}!");
+			player.Location = "gameover";
+		} 
+		else
+		{
+			opponent.Defeat(player);
+		}
     }
 
     static void ChoosePlayerAction(Player player, Opponent opponent)
