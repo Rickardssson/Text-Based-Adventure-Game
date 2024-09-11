@@ -58,12 +58,13 @@
     {
         if (player.FinalOpponentName == "")
         {
-            Console.Write($"Well {player.Name} pick your poison? ");
+            Console.Write($"Well {player.Name} pick your poison. ");
             player.FinalOpponentName = "Mr. " + Console.ReadLine();
             Console.WriteLine("We don't have that so have this instead.");
         }
         else
         {
+			Console.WriteLine("--------------------------------------------");
             Console.WriteLine("You approach the bartender.");
             Console.WriteLine("Take this, it's on the house");
         }
@@ -79,6 +80,7 @@
 
     static void Bathroom(Player player)
     {
+		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the bathroom.");
         if (player.Items.Contains("Jacket") || player.Items.Contains("Wardrobe Ticket"))
         {
@@ -89,7 +91,7 @@
             Console.WriteLine("A shady figure approaches from one of the stalls.");
             List<string> options = new List<string> { "shot", "ticket" };
             
-            string choice = AskBetweenOptions("Shot or a ticket, the choice is yours... ", options);
+            string choice = AskBetweenOptions("Shot or ticket, the choice is yours... ", options);
             if (choice == "shot")
             {
                 ObtainShot(player);
@@ -109,6 +111,7 @@
 
     static void Wardrobe(Player player)
     {
+		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the wardrobe.");
         if (player.Items.Contains("Jacket"))
         {
@@ -144,8 +147,10 @@
 
     static void Dancefloor(Player player)
     {
+		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the dancefloor.");
-        Console.WriteLine("A stranger challenges you to a dance off!");
+		Console.WriteLine("A crowd gathers around you and a stranger approaches you.");
+        Console.WriteLine("The stranger challenges you to a dance off!");
 
         if (AskYesOrNo("Do you accept the challenge? "))
         {
