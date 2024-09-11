@@ -28,12 +28,12 @@
         if (this.random.Next(2) == 1)
         {
             this.Popularity += 2;
-            Console.WriteLine($"{this.Name} danced well and 2 people joined their crowd.");
+            Console.WriteLine($"{this.Name} danced well and 2 people started cheering for them.");
         }
         else
         {
             this.Popularity -= 2;
-            Console.WriteLine($"{this.Name} danced poorly and 2 people left their crowd.");
+            Console.WriteLine($"{this.Name} danced poorly and 2 people started booing.");
         }
     }
 
@@ -51,6 +51,6 @@
         Console.WriteLine($"{roasts[this.random.Next(roasts.Length)]}");
         this.Popularity += 1;
         player.Popularity -= 1;
-        Console.WriteLine($"One member of {player.Name}'s crowd joins the crowd of {this.Name}.");
+        Console.WriteLine($"A crowd member stopped cheering for {player.Name} and started cheering for {this.Name}.");
     }
 }
