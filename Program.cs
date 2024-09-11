@@ -9,6 +9,19 @@
             {
                 NewGame(player);
             }
+			else if (player.Location == "gameover")
+			{
+				Console.WriteLine("\n--------------------------------------------");
+				Console.WriteLine("You got kicked out!");
+				if (AskYesOrNo("Do you want to try again? ")) 
+				{
+					player.Location = "newgame";
+				}
+				else
+				{
+					System.Environment.Exit(1);
+				}
+			}
             else if (player.Location == "bar")
             {
                 Bar(player);
@@ -156,6 +169,10 @@
         {
             BasicOpponent opponent = new BasicOpponent("The Stranger", player.Popularity + 5, 15, "tiktok_dance", 2);
             DanceBattle(player, opponent);
+			if (player.Location == "gameover")
+			{
+				return;
+			}
         }
 
         List<string> availableLocations = new List<string> { "bar", "wardrobe", "lounge"};
