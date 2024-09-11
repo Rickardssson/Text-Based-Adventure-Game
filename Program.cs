@@ -192,7 +192,7 @@
     static void ChoosePlayerAction(Player player, Opponent opponent)
     {
         List<string> playerActions = new List<string> { "modern", "disco", "folk" };
-        Console.WriteLine("Dances: Modern | Disco | Folk");
+        Console.WriteLine("---\nDances: Modern | Disco | Folk\n---");
         string action = AskBetweenOptions("Which dance do you choose? ", playerActions);
 
         if (action == "modern")
