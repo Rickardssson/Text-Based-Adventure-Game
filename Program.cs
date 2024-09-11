@@ -38,6 +38,10 @@
             {
                 Dancefloor(player);
             }
+            else if (player.Location == "lounge")
+            {
+                Lounge(player);
+            }
             else
             {
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
@@ -191,6 +195,23 @@
         } while (!playerCanEnterLocation);
     }
 
+    static void Lounge(Player player)
+    {
+        Console.WriteLine("--------------------------------------------");
+        Console.WriteLine("You enter the lounge.");
+        Console.WriteLine("Before you there is an even larger dancefloor with an even larger crowd.");
+        Console.WriteLine("The crowd slowly opens up and a hooded figure emerges.");
+        Console.WriteLine("The figure unveils and introduces themself.");
+        Console.WriteLine($"'The name is {player.FinalOpponentName}, and you have entered my domain.'");
+        
+        FinalOpponent opponent = new FinalOpponent(player.FinalOpponentName, player.Popularity + 10, 50, "breakdance", 3);
+        DanceBattle(player, opponent);
+        if (player.Location == "gameover")
+        {
+            return;
+        }
+    }
+
     static void DanceBattle(Player player, Opponent opponent)
     {
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
@@ -198,14 +219,15 @@
 		// Loops while the battle should be active
         do
         {
-			Console.WriteLine($"\n{opponent.Name}'s turn:");
+            Console.WriteLine($"\n{opponent.Name}'s turn:");
             opponent.PickAction(player);
-			Thread.Sleep(1500);
-			Console.WriteLine($"\n{player.Name}'s turn:");
+            Thread.Sleep(1500);
+            Console.WriteLine($"\n{player.Name}'s turn:");
             ChoosePlayerAction(player, opponent);
-			Thread.Sleep(1500);
+            Thread.Sleep(1500);
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
 
+        Console.WriteLine("The Crowd declares a clear winner!");
 		if (player.Popularity < opponent.Popularity)
 		{
 			Console.WriteLine($"{player.Name} was deafeated by {opponent.Name}!");
@@ -213,7 +235,8 @@
 		} 
 		else
 		{
-			opponent.Defeat(player);
+            Console.WriteLine($"{opponent.Name} was deafeated by {player.Name}!");
+            opponent.Defeat(player);
 		}
     }
 

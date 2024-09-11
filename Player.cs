@@ -6,10 +6,12 @@
     public int Courage = 50;
     public List<string> Items = new List<string>();
     public string Location = "newgame";
+    public string LastMoveUsed = "";
 
     public void Action1(Opponent opponent)
     {
         Console.WriteLine($"{this.Name} used 'Modern Dance'!");
+        LastMoveUsed = "modern_dance";
         if (opponent.DanceType == "tiktok_dance")
         {
             Console.WriteLine("It's very effective!");
@@ -33,6 +35,7 @@
     public void Action2(Opponent opponent)
     {
         Console.WriteLine($"{this.Name} used 'Disco Dance'!");
+        LastMoveUsed = "disco_dance";
         if (opponent.DanceType == "breakdance")
         {
             Console.WriteLine("It's very effective!");
@@ -55,9 +58,10 @@
 
     public void Action3(Opponent opponent)
     {
+        Console.WriteLine($"{this.Name} used 'Folk Dance'!");
+        LastMoveUsed = "folk_dance";
         if (this.Courage >= 75)
         {
-            Console.WriteLine($"{this.Name} used 'Folk Dance'!");
             Console.WriteLine("It's super effective!");
             opponent.Popularity -= 5;
             this.Popularity += 10;
