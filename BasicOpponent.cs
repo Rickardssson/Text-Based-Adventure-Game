@@ -25,6 +25,7 @@
     public override void Action1(Player player)
     {
         Console.WriteLine($"{this.Name} used 'TikTok Dance'!");
+		Thread.Sleep(200);
         if (this.random.Next(2) == 1)
         {
             this.Popularity += 2;
@@ -40,6 +41,7 @@
     public override void Action2(Player player)
     {
         Console.WriteLine($"{this.Name} used 'Roast Opponent'!");
+		Thread.Sleep(200);
 
         string[] roasts =
         {
@@ -49,6 +51,8 @@
         };
         
         Console.WriteLine($"{roasts[this.random.Next(roasts.Length)]}");
+		Thread.Sleep(200);
+
         this.Popularity += 1;
         player.Popularity -= 1;
         Console.WriteLine($"A crowd member stopped cheering for {player.Name} and started cheering for {this.Name}.");
@@ -61,7 +65,9 @@
             Console.WriteLine("Hey! You're pretty cool, the names Carl!");
             this.Name = "Carl";
         }
+		Thread.Sleep(300);
         Console.WriteLine("You've won this battle but there is still an opponent left in the lounge! ");
+		Thread.Sleep(300);
         player.Items.Add("VIP Card");
         Console.WriteLine($"{this.Name} hands over a VIP Card.");
         Thread.Sleep(1000);

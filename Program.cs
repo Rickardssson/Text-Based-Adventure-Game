@@ -258,7 +258,7 @@
 		// Loops while the battle should be active
         do
         {
-			Console.WriteLine("\n-----");
+			Console.WriteLine("\n----- Next round -----\n");
 			if (player.Popularity > opponent.Popularity)
 			{
 				Console.WriteLine($"{player.Name} is ahead of {opponent.Name} by {player.Popularity - opponent.Popularity}!");
@@ -267,12 +267,13 @@
 			{
 				Console.WriteLine($"{opponent.Name} is ahead of {player.Name} by {opponent.Popularity - player.Popularity}!");
 			}
+			Thread.Sleep(600);
             Console.WriteLine($"\n{opponent.Name}'s turn:");
             opponent.PickAction(player);
-            Thread.Sleep(1500);
+            Thread.Sleep(600);
             Console.WriteLine($"\n{player.Name}'s turn:");
             ChoosePlayerAction(player, opponent);
-            Thread.Sleep(1500);
+            Thread.Sleep(600);
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
 
 		Console.WriteLine("\n-----");
@@ -293,7 +294,8 @@
     {
         List<string> playerActions = new List<string> { "modern", "disco", "folk" };
         Console.WriteLine("---\nDances: Modern | Disco | Folk\n---");
-        string action = AskBetweenOptions("Which dance do you choose? ", playerActions);
+        string action = AskBetweenOptions("What do you do? ", playerActions);
+		Console.WriteLine();
 
         if (action == "modern")
         {

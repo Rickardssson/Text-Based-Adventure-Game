@@ -12,10 +12,12 @@
     public void Action1(Opponent opponent)
     {
         Console.WriteLine($"{this.Name} used 'Modern Dance'!");
+		Thread.Sleep(200);
         LastMoveUsed = "modern_dance";
         if (opponent.DanceType == "tiktok_dance")
         {
             Console.WriteLine("It's very effective!");
+			Thread.Sleep(200);
             opponent.Popularity -= 5;
             this.Popularity += 5;
             Console.WriteLine($"5 people stopped cheering {opponent.Name}'s name and started cheering for {this.Name} instead.");
@@ -23,6 +25,7 @@
         else if (opponent.DanceType == "breakdance")
         {
             Console.WriteLine("It's not very effective!");
+			Thread.Sleep(200);
             opponent.Popularity += 3;
             this.Popularity -= 3;
             Console.WriteLine($"3 people stopped cheering for {this.Name} to cheer for {opponent.Name}.");
@@ -36,10 +39,12 @@
     public void Action2(Opponent opponent)
     {
         Console.WriteLine($"{this.Name} used 'Disco Dance'!");
+		Thread.Sleep(200);
         LastMoveUsed = "disco_dance";
         if (opponent.DanceType == "breakdance")
         {
             Console.WriteLine("It's very effective!");
+			Thread.Sleep(200);
             opponent.Popularity -= 5;
             this.Popularity += 5;
             Console.WriteLine($"5 people stopped cheering {opponent.Name}'s name and started cheering for {this.Name} instead.");
@@ -47,6 +52,7 @@
         else if (opponent.DanceType == "tiktok_dance")
         {
             Console.WriteLine("It's not very effective!");
+			Thread.Sleep(200);
             opponent.Popularity += 3;
             this.Popularity -= 3;
             Console.WriteLine($"3 people stopped cheering for {this.Name} to cheer for {opponent.Name}.");
@@ -60,13 +66,16 @@
     public void Action3(Opponent opponent)
     {
         Console.WriteLine($"{this.Name} used 'Folk Dance'!");
+		Thread.Sleep(200);
         LastMoveUsed = "folk_dance";
         if (this.Courage >= 75)
         {
             Console.WriteLine("It's super effective!");
+			Thread.Sleep(200);
             opponent.Popularity -= 5;
             this.Popularity += 10;
             Console.WriteLine($"5 people stopped cheering for{opponent.Name}.");
+			Thread.Sleep(100);
             Console.WriteLine($"10 people joined in the cheer for {this.Name}!");
         }
         else

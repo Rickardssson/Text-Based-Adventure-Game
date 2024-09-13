@@ -30,6 +30,7 @@
     public override void Action1(Player player)
     {
         Console.WriteLine($"{this.Name} used 'Breakdance'!");
+        Thread.Sleep(200);
         if (this.random.Next(2) == 1)
         {
             int gain = this.random.Next(3, 6);
@@ -44,14 +45,17 @@
     public override void Action2(Player player)
     {
         Console.WriteLine($"{this.Name} used 'Get the crowd fired up'!");
-
+        Thread.Sleep(200);
         Console.WriteLine("After both dancers explosive display, getting the crowd fired up was an easy task!");
+        Thread.Sleep(200);
         if (player.LastMoveUsed == "disco_dance")
         {
             Console.WriteLine($"After {player.Name}'s last display fans of {this.Name} are growing wary.");
+            Thread.Sleep(200);
             this.Popularity += 12;
             player.Popularity += 5;
             Console.WriteLine("The crowd got heated and both sides grew louder.");
+            Thread.Sleep(200);
             Console.WriteLine($"The cheer section for {this.Name} grew by 12 but {player.Name} also gained 5 cheers.");
         }
         else
@@ -65,6 +69,7 @@
     public void Action3(Player player)
     {
         Console.WriteLine($"{this.Name} used 'Flip'!");
+        Thread.Sleep(200);
         int flip = this.random.Next(3);
         int gain;
         if (flip == 0)
@@ -82,6 +87,8 @@
             Console.WriteLine($"{this.Name} performs a handspring!");
             gain = 3;
         }
+        
+        Thread.Sleep(200);
 
         this.Popularity += gain;
         Console.WriteLine($"The cheer for {this.Name} grows louder as if {gain} people joined in.");
