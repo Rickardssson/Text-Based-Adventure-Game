@@ -144,7 +144,7 @@
     {
 		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the wardrobe.");
-        if (player.Items.Contains("Jacket"))
+        if (player.HasObtainedClothing)
         {
             Console.WriteLine("Nothing more to do here.");
         }
@@ -155,12 +155,36 @@
             {
                 if (player.Items.Contains("Wardrobe Ticket"))
                 {
-                    player.Items.Remove("Wardrobe Ticket");
-                    player.Items.Add("Jacket");
-                    player.Courage += 20;
+					Console.WriteLine("There is no telling what you will get.");
+					Thread.Sleep(500);
+					Console.WriteLine("Da-da-da-daaaa!");
+					Thread.Sleep(500);
 
-                    Console.WriteLine("You lost your ticket but gained a Jacket!");
-                    Console.WriteLine("With your new Jacket you gain 20 Courage!");
+					Random random = new Random();
+					List<string> clothingNames = new List<string> { "Jacket", "Cap", "Well Worn Scarf", "Ugly Christmas Sweater" };
+					Dictionary<string, int> clothing = new Dictionary<string, int>();
+					clothing.Add(clothingNames[0], 20);
+					clothing.Add(clothingNames[1], 10);
+					clothing.Add(clothingNames[2], 0);
+					clothing.Add(clothingNames[3], -20);
+					
+					string gainedClothingItem = clothingNames[random.Next(clothingNames.Count)];
+					
+                    player.Items.Remove("Wardrobe Ticket");
+                    player.Items.Add(gainedClothingItem);
+                    player.Courage += clothing[gainedClothingItem];
+
+					if (gainedClothingItem == "Well Worn Scarf")
+					{
+						Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+						Console.WriteLine("Since it was mostly rags you throw it in the trash.");
+						Console.WriteLine("You gained nothing but a bad conscience.");	 
+					}
+					else
+					{
+                    Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+                    Console.WriteLine($"With your new {gainedClothingItem} you gain {clothing[gainedClothingItem]} Courage!");
+					}
                 }
                 else
                 {

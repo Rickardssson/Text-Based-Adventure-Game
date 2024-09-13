@@ -7,6 +7,7 @@
     public List<string> Items = new List<string>();
     public string Location = "newgame";
     public string LastMoveUsed = "";
+	public bool HasObtainedClothing = false;
 
     public void Action1(Opponent opponent)
     {
