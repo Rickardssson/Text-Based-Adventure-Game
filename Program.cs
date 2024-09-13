@@ -275,26 +275,35 @@
             Console.WriteLine($"\n{player.Name}'s turn:");
             ChoosePlayerAction(player, opponent);
             Thread.Sleep(600);
+
+            if (player.Location == "gameover") break;
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
 
-		Console.WriteLine("\n-----");
-        Console.WriteLine("The Crowd declares a clear winner!");
-		if (player.Popularity < opponent.Popularity)
-		{
-			Console.WriteLine($"{player.Name} was deafeated by {opponent.Name}!");
-			player.Location = "gameover";
-		} 
-		else
-		{
-            Console.WriteLine($"{opponent.Name} was deafeated by {player.Name}!");
-            opponent.Defeat(player);
-		}
+        if (player.Location != "gameover")
+        {
+		    Console.WriteLine("\n-----");
+            Console.WriteLine("The Crowd declares a clear winner!");
+		    if (player.Popularity < opponent.Popularity)
+		    {
+			    Console.WriteLine($"{player.Name} was defeated by {opponent.Name}!");
+			    player.Location = "gameover";
+		    } 
+		    else
+		    {
+                Console.WriteLine($"{opponent.Name} was defeated by {player.Name}!");
+                opponent.Defeat(player);
+		    }
+        }
+        else
+        {
+            Console.WriteLine("You have committed battery.");
+        }
     }
 
     static void ChoosePlayerAction(Player player, Opponent opponent)
     {
-        List<string> playerActions = new List<string> { "modern", "disco", "folk" };
-        Console.WriteLine("---\nDances: Modern | Disco | Folk\n---");
+        List<string> playerActions = new List<string> { "modern", "disco", "folk", "throw" };
+        Console.WriteLine("---\nDances: Modern | Disco | Folk\nOther actions: Throw\n---");
         string action = AskBetweenOptions("What do you do? ", playerActions);
 		Console.WriteLine();
 
@@ -311,6 +320,11 @@
         if (action == "folk")
         {
             player.Action3(opponent);
+        }
+
+        if (action == "throw")
+        {
+            player.Action4(opponent);
         }
     }
     

@@ -84,4 +84,37 @@
             Console.WriteLine("You weren't courageous enough to perform and therefore 2 people started booing.");
         }
     }
+
+    public void Action4(Opponent opponent)
+    {
+        Console.WriteLine($"{this.Name} used 'Throw Empty Shot Glass'!");
+
+        if (this.Items.Contains("Empty Shot Glass"))
+        {
+            this.Items.Remove("Empty Shot Glass");
+            Random random = new Random();
+
+            if (random.Next(4) == 0)
+            {
+                Console.WriteLine($"{this.Name} looked around after throwing and spots a guard sprinting towards them.");
+                Thread.Sleep(1000);
+                this.Location = "gameover";
+            }
+            else
+            {
+                this.Courage += 5;
+                this.Popularity -= 1;
+                opponent.Popularity -= 1;
+                
+                Console.WriteLine($"Both contestants lost a cheer each but {this.Name} gained 5 Courage.");
+            }
+            
+            Console.WriteLine($"{this.Name} lost an Empty Shot Glass with use.");
+        }
+        else
+        {
+            this.Popularity -= 2;
+            Console.WriteLine($"{this.Name} did not have an Empty Shot Glass to throw and therefore 2 people stopped cheering!");
+        }
+    }
 }
