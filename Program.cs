@@ -218,17 +218,27 @@ class Program
     {
 		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the dancefloor.");
-		Console.WriteLine("A crowd gathers around you and a stranger approaches you.");
-        Console.WriteLine("The stranger challenges you to a dance off!");
-
-        if (AskYesOrNo("Do you accept the challenge? "))
+        Console.WriteLine("The dancefloor is bustling.\n");
+        Thread.Sleep(500);
+        if (!player.Items.Contains("VIP Card"))
         {
-            BasicOpponent opponent = new BasicOpponent("The Stranger", player.Popularity + 5, 15, "tiktok_dance", 2);
-            DanceBattle(player, opponent);
-			if (player.Location == "gameover")
-			{
-				return;
-			}
+            Console.WriteLine("A crowd gathers around you and a stranger approaches you.");
+            Console.WriteLine("The stranger challenges you to a dance off!");
+
+            if (AskYesOrNo("Do you accept the challenge? "))
+            {
+                BasicOpponent opponent =
+                    new BasicOpponent("The Stranger", player.Popularity + 5, 15, "tiktok_dance", 2);
+                DanceBattle(player, opponent);
+                if (player.Location == "gameover")
+                {
+                    return;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Nothing happens.");
         }
 
         List<string> availableLocations = new List<string> { "bar", "wardrobe", "lounge"};
