@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System.Threading.Channels;
+
+class Program
 {
     static void Main(string[] args)
     {
@@ -114,9 +116,18 @@
     {
 		Console.WriteLine("--------------------------------------------");
         Console.WriteLine("You enter the bathroom.");
-        if (player.Items.Contains("Jacket") || player.Items.Contains("Wardrobe Ticket"))
+        if (player.HasObtainedClothing || player.Items.Contains("Wardrobe Ticket"))
         {
-            Console.WriteLine("Nothing happens");
+            Console.WriteLine("The bathroom is less crowded, so you check your belongings.");
+            
+            player.Items.Sort();
+            Console.WriteLine("---");
+            foreach (string item in player.Items)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("---");
         }
         else
         {
@@ -174,10 +185,12 @@
                     player.Items.Remove("Wardrobe Ticket");
                     player.Items.Add(gainedClothingItem);
                     player.Courage += clothing[gainedClothingItem];
-
+                    player.HasObtainedClothing = true;
+                    
 					if (gainedClothingItem == "Well Worn Scarf")
 					{
 						Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+                        player.Items.Remove("Well Worn Scarf");
 						Console.WriteLine("Since it was mostly rags you throw it in the trash.");
 						Console.WriteLine("You gained nothing but a bad conscience.");	 
 					}
