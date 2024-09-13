@@ -242,7 +242,7 @@
         Console.WriteLine("The figure unveils and introduces themself.");
         Console.WriteLine($"'The name is {player.FinalOpponentName}, and you have entered my domain.'");
         
-        FinalOpponent opponent = new FinalOpponent(player.FinalOpponentName, player.Popularity + 10, 50, "breakdance", 3);
+        FinalOpponent opponent = new FinalOpponent(player.FinalOpponentName, player.Popularity + 10, 30, "breakdance", 3);
         DanceBattle(player, opponent);
         if (player.Location == "gameover")
         {
