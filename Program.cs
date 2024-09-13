@@ -397,6 +397,11 @@ class Program
 
     static void DrinkShot(Player player)
     {
+        if (player.Items.Contains("Shot"))
+        {
+            player.Items.Remove("Shot");
+        }
+
         player.Courage += 5;
         player.Items.Add("Empty Shot Glass");
         Console.WriteLine("You gained 5 Courage and an empty shot glass!");
