@@ -133,7 +133,7 @@ class Program
 
             if (player.Items.Contains("Shot"))
             {
-                if (AskYesOrNo("You have a shot, do you want to drink it?"))
+                if (AskYesOrNo("You have a shot, do you want to drink it? "))
                 {
                     DrinkShot(player);
                 }
