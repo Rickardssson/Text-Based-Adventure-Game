@@ -22,6 +22,20 @@
 					player.Location = "quit";
 				}
 			}
+			else if (player.Location == "victory")
+			{
+				Console.WriteLine("\n--------------------------------------------");
+				Console.WriteLine($"Congratulations {player.Name}!");
+				Console.WriteLine("You are now the top of the 'food chain' here at the dance club!");
+				if (AskYesOrNo("Do you want to play again? ")) 
+				{
+					player.Location = "newgame";
+				}
+				else
+				{
+					player.Location = "quit";
+				}
+			}
             else if (player.Location == "bar")
             {
                 Bar(player);

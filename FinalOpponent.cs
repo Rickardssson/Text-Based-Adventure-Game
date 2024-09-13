@@ -90,5 +90,6 @@
     public override void Defeat(Player player)
     {
         Console.WriteLine("'Since you have defeated me you are the strongest dancer at this establishment.'");
+        player.Location = "victory";
     }
 }
