@@ -19,7 +19,7 @@
 				}
 				else
 				{
-					System.Environment.Exit(1);
+					player.Location = "quit";
 				}
 			}
             else if (player.Location == "bar")
