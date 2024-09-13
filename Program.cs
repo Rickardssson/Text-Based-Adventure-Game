@@ -164,7 +164,7 @@ class Program
         else
         {
             Console.WriteLine("There is someone attending the wardrobe.");
-            if (AskYesOrNo("'Do you want to exchange your clothes? For that you need a ticket.' "))
+            if (AskYesOrNo("'Do you want to get your clothes back? For that you need your ticket.' "))
             {
                 if (player.Items.Contains("Wardrobe Ticket"))
                 {
@@ -182,24 +182,34 @@ class Program
 					clothing.Add(clothingNames[3], -20);
 					
 					string gainedClothingItem = clothingNames[random.Next(clothingNames.Count)];
-					
-                    player.Items.Remove("Wardrobe Ticket");
-                    player.Items.Add(gainedClothingItem);
-                    player.Courage += clothing[gainedClothingItem];
-                    player.HasObtainedClothing = true;
                     
-					if (gainedClothingItem == "Well Worn Scarf")
-					{
-						Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
-                        player.Items.Remove("Well Worn Scarf");
-						Console.WriteLine("Since it was mostly rags you throw it in the trash.");
-						Console.WriteLine("You gained nothing but a bad conscience.");	 
-					}
-					else
-					{
-                    Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
-                    Console.WriteLine($"With your new {gainedClothingItem} you gain {clothing[gainedClothingItem]} Courage!");
-					}
+                    player.Items.Remove("Wardrobe Ticket");
+                    player.HasObtainedClothing = true;
+
+                    Console.WriteLine($"The attendee comes back with a {gainedClothingItem}.");
+                    if (AskYesOrNo("Do you keep it? "))
+                    {
+                        player.Items.Add(gainedClothingItem);
+                        player.Courage += clothing[gainedClothingItem];
+
+					    if (gainedClothingItem == "Well Worn Scarf")
+					    {
+						    Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+                            player.Items.Remove("Well Worn Scarf");
+						    Console.WriteLine("Since it was mostly rags you throw it in the trash.");
+						    Console.WriteLine("You gained nothing but a bad conscience.");	 
+					    }
+					    else
+					    {
+                        Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+                        Console.WriteLine($"With your new {gainedClothingItem} you gain {clothing[gainedClothingItem]} Courage!");
+					    }
+                    }
+                    else
+                    {
+                        Console.WriteLine("You lose your ticket and gain nothing in return.");
+                    }
+                    
                 }
                 else
                 {
