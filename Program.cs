@@ -253,10 +253,20 @@
     static void DanceBattle(Player player, Opponent opponent)
     {
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
+		Console.WriteLine($"The victor is decided when a contestant is ahead by {opponent.PopularityDifference} cheers.");
 		Thread.Sleep(1500);
 		// Loops while the battle should be active
         do
         {
+			Console.WriteLine("\n-----");
+			if (player.Popularity > opponent.Popularity)
+			{
+				Console.WriteLine($"{player.Name} is ahead of {opponent.Name} by {player.Popularity - opponent.Popularity}!");
+			}
+			else
+			{
+				Console.WriteLine($"{opponent.Name} is ahead of {player.Name} by {opponent.Popularity - player.Popularity}!");
+			}
             Console.WriteLine($"\n{opponent.Name}'s turn:");
             opponent.PickAction(player);
             Thread.Sleep(1500);
@@ -265,6 +275,7 @@
             Thread.Sleep(1500);
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
 
+		Console.WriteLine("\n-----");
         Console.WriteLine("The Crowd declares a clear winner!");
 		if (player.Popularity < opponent.Popularity)
 		{
