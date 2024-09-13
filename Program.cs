@@ -61,6 +61,7 @@
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
             }
         }
+		Console.WriteLine("Thanks for Playing!");
     }
 
     static void NewGame(Player player)
