@@ -61,6 +61,7 @@ class Program
             else
             {
                 Console.Error.WriteLine($"You forgot to implement '{player.Location}'!");
+                player.Location = "quit";
             }
         }
 		Console.WriteLine("Thanks for Playing!");
@@ -69,7 +70,7 @@ class Program
     static void NewGame(Player player)
     {
         Console.Clear();
-        Console.WriteLine("You find yourself in a bar and see the bartender aproach you.");
+        Console.WriteLine("You find yourself in a bar and see the bartender approach you.");
         string name = "";
         do
         {
@@ -129,6 +130,14 @@ class Program
             }
 
             Console.WriteLine("---");
+
+            if (player.Items.Contains("Shot"))
+            {
+                if (AskYesOrNo("You have a shot, do you want to drink it?"))
+                {
+                    DrinkShot(player);
+                }
+            }
         }
         else
         {
