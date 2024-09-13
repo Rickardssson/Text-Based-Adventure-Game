@@ -118,7 +118,8 @@ class Program
         Console.WriteLine("You enter the bathroom.");
         if (player.HasObtainedClothing || player.Items.Contains("Wardrobe Ticket"))
         {
-            Console.WriteLine("The bathroom is less crowded, so you check your belongings.");
+            Console.WriteLine("The bathroom is less crowded, so you check your belongings.\n");
+            Console.WriteLine($"Courage: {player.Courage} | Popularity: {player.Popularity}");
             
             player.Items.Sort();
             Console.WriteLine("---");

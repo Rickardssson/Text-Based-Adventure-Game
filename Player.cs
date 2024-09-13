@@ -82,6 +82,7 @@
         {
             this.Popularity -= 2;
             Console.WriteLine("You weren't courageous enough to perform and therefore 2 people started booing.");
+            Console.WriteLine("You need a total of at least 75 courage.");
         }
     }
 
