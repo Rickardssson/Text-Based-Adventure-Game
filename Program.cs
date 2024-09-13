@@ -210,8 +210,8 @@ class Program
 					    }
 					    else
 					    {
-                        Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
-                        Console.WriteLine($"With your new {gainedClothingItem} you gain {clothing[gainedClothingItem]} Courage!");
+                            Console.WriteLine($"You lost your ticket but gained a {gainedClothingItem}!");
+                            Console.WriteLine($"With your new {gainedClothingItem} you gain {clothing[gainedClothingItem]} Courage!");
 					    }
                     }
                     else
