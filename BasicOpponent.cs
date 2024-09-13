@@ -45,9 +45,9 @@
 
         string[] roasts =
         {
-            "Are you dancing? Looks more like tripping over air.",
-            "Elegance isn't your dancefloor strong suit.",
-            "You dance like a malfunctioning robot.",
+            "'Are you dancing? Looks more like tripping over air.'",
+            "'Elegance isn't your dancefloor strong suit.'",
+            "'You dance like a malfunctioning robot.'",
         };
         
         Console.WriteLine($"{roasts[this.random.Next(roasts.Length)]}");
@@ -62,11 +62,11 @@
     {
         if (player.Courage >= 75)
         {
-            Console.WriteLine("Hey! You're pretty cool, the names Carl!");
+            Console.WriteLine("'Hey! You're pretty cool, the names Carl!'");
             this.Name = "Carl";
         }
 		Thread.Sleep(300);
-        Console.WriteLine("You've won this battle but there is still an opponent left in the lounge! ");
+        Console.WriteLine("'You've won this battle but there is still an opponent left in the lounge!' ");
 		Thread.Sleep(300);
         player.Items.Add("VIP Card");
         Console.WriteLine($"{this.Name} hands over a VIP Card.");

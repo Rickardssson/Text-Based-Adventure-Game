@@ -73,14 +73,14 @@ class Program
         string name = "";
         do
         {
-            name = Ask("What's your name kid? ");
-        } while (!AskYesOrNo($"{name} is it? "));
+            name = Ask("'What's your name kid?' ");
+        } while (!AskYesOrNo($"'{name} is it?' "));
 
         int initialPopularity;
 
-        while (!int.TryParse(Ask("How many friends did you come with? "), out initialPopularity))
+        while (!int.TryParse(Ask("'How many friends did you come with?' "), out initialPopularity))
         {
-            Console.WriteLine("Are you that drunk already? That is not a number.");
+            Console.WriteLine("'Are you that drunk already? That is not a number.'");
         }
 
         player.Name = name;
@@ -92,15 +92,15 @@ class Program
     {
         if (player.FinalOpponentName == "")
         {
-            Console.Write($"Well {player.Name} pick your poison. ");
+            Console.Write($"'Well {player.Name} pick your poison.' ");
             player.FinalOpponentName = "Mr. " + Console.ReadLine();
-            Console.WriteLine("We don't have that so have this instead.");
+            Console.WriteLine("'We don't have that so have this instead.'");
         }
         else
         {
 			Console.WriteLine("--------------------------------------------");
             Console.WriteLine("You approach the bartender.");
-            Console.WriteLine("Take this, it's on the house");
+            Console.WriteLine("'Take this, it's on the house'");
         }
         
         Console.WriteLine("The bartender hands you a shot of some indistinguishable liquid.");
@@ -135,7 +135,7 @@ class Program
             Console.WriteLine("A shady figure approaches from one of the stalls.");
             List<string> options = new List<string> { "shot", "ticket" };
             
-            string choice = AskBetweenOptions("Shot or ticket, the choice is yours... ", options);
+            string choice = AskBetweenOptions("'Shot or ticket, the choice is yours...' ", options);
             if (choice == "shot")
             {
                 ObtainShot(player);
@@ -164,7 +164,7 @@ class Program
         else
         {
             Console.WriteLine("There is someone attending the wardrobe.");
-            if (AskYesOrNo("Do you want to exchange your clothes? For that you need a ticket. "))
+            if (AskYesOrNo("'Do you want to exchange your clothes? For that you need a ticket.' "))
             {
                 if (player.Items.Contains("Wardrobe Ticket"))
                 {
@@ -203,7 +203,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Comeback when you actually have a ticket!");
+                    Console.WriteLine("'Comeback when you actually have a ticket!'");
                     player.Courage -= 1;
                     Console.WriteLine("For lying and getting caught you lost 1 Courage");
                 }
