@@ -1,4 +1,4 @@
-﻿abstract class Opponent
+﻿abstract class OpponentBase
 {
     public string Name = "";
     public int Popularity = 0;
@@ -6,7 +6,7 @@
     public string DanceType = "";
     public int ActionAmount = 2;
 
-    public Opponent(string name, int popularity, int popularityDifference, string danceType, int actionAmount)
+    public OpponentBase(string name, int popularity, int popularityDifference, string danceType, int actionAmount)
     {
         Name = name;
         Popularity = popularity;

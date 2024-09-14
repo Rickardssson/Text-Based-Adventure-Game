@@ -311,7 +311,7 @@ class Program
         }
     }
 
-    static void DanceBattle(Player player, Opponent opponent)
+    static void DanceBattle(Player player, OpponentBase opponent)
     {
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
 		Console.WriteLine($"The victor is decided when a contestant is ahead by {opponent.PopularityDifference} cheers.");
@@ -366,7 +366,7 @@ class Program
         }
     }
 
-    static void ChoosePlayerAction(Player player, Opponent opponent)
+    static void ChoosePlayerAction(Player player, OpponentBase opponent)
     {
         List<string> playerActions = new List<string> { "modern", "disco", "folk", "throw" };
         Console.WriteLine("---\nDances: Modern | Disco | Folk\nOther actions: Throw\n---");

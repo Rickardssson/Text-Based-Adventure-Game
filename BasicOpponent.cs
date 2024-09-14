@@ -1,4 +1,4 @@
-﻿class BasicOpponent : Opponent
+﻿class BasicOpponent : OpponentBase
 {
     private Random random = new Random();
     public BasicOpponent(string name, int popularity, int popularityDifference, string danceType, int actionAmount) : base(name, popularity, popularityDifference, danceType, actionAmount)

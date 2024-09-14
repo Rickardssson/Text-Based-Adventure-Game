@@ -1,4 +1,4 @@
-﻿class FinalOpponent : Opponent
+﻿class FinalOpponent : OpponentBase
 {
     private Random random = new Random();
     public FinalOpponent(string name, int popularity, int popularityDifference, string danceType, int actionAmount) : base(name, popularity, popularityDifference, danceType, actionAmount)

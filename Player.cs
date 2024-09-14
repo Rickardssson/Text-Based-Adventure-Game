@@ -9,7 +9,7 @@
     public string LastMoveUsed = "";
 	public bool HasObtainedClothing = false;
 
-    public void Action1(Opponent opponent)
+    public void Action1(OpponentBase opponent)
     {
         Console.WriteLine($"{this.Name} used 'Modern Dance'!");
 		Thread.Sleep(200);
@@ -36,7 +36,7 @@
         }
     }
 
-    public void Action2(Opponent opponent)
+    public void Action2(OpponentBase opponent)
     {
         Console.WriteLine($"{this.Name} used 'Disco Dance'!");
 		Thread.Sleep(200);
@@ -63,7 +63,7 @@
         }
     }
 
-    public void Action3(Opponent opponent)
+    public void Action3(OpponentBase opponent)
     {
         Console.WriteLine($"{this.Name} used 'Folk Dance'!");
 		Thread.Sleep(200);
@@ -86,7 +86,7 @@
         }
     }
 
-    public void Action4(Opponent opponent)
+    public void Action4(OpponentBase opponent)
     {
         Console.WriteLine($"{this.Name} used 'Throw Empty Shot Glass'!");
 
