@@ -91,6 +91,7 @@ class Program
 
     static void Bar(Player player)
     {
+        // This is used to check if the player has already visited the bar
         if (player.FinalOpponentName == "")
         {
             Console.Write($"'Well {player.Name} pick your poison.' ");
@@ -128,7 +129,6 @@ class Program
             {
                 Console.WriteLine(item);
             }
-
             Console.WriteLine("---");
 
             if (player.Items.Contains("Shot"))
@@ -184,7 +184,9 @@ class Program
 
 					Random random = new Random();
 					List<string> clothingNames = new List<string> { "Jacket", "Cap", "Well Worn Scarf", "Ugly Christmas Sweater" };
-					Dictionary<string, int> clothing = new Dictionary<string, int>();
+					
+                    // Creates a dictionary that uses the name of clothing as key and courage gain as value 
+                    Dictionary<string, int> clothing = new Dictionary<string, int>();
 					clothing.Add(clothingNames[0], 20);
 					clothing.Add(clothingNames[1], 10);
 					clothing.Add(clothingNames[2], 0);
@@ -247,9 +249,16 @@ class Program
 
             if (AskYesOrNo("Do you accept the challenge? "))
             {
-                BasicOpponent opponent =
-                    new BasicOpponent("The Stranger", player.Popularity + 5, 15, "tiktok_dance", 2);
+                BasicOpponent opponent = new BasicOpponent(
+                    "The Stranger", 
+                    player.Popularity + 5, 
+                    15, 
+                    "tiktok_dance", 
+                    2
+                );
+
                 DanceBattle(player, opponent);
+
                 if (player.Location == "gameover")
                 {
                     return;
@@ -286,8 +295,16 @@ class Program
         Console.WriteLine("The figure unveils and introduces themself.");
         Console.WriteLine($"'The name is {player.FinalOpponentName}, and you have entered my domain.'");
         
-        FinalOpponent opponent = new FinalOpponent(player.FinalOpponentName, player.Popularity + 10, 30, "breakdance", 3);
+        FinalOpponent opponent = new FinalOpponent(
+            player.FinalOpponentName, 
+            player.Popularity + 10, 
+            30, 
+            "breakdance", 
+            3
+        );
+
         DanceBattle(player, opponent);
+
         if (player.Location == "gameover")
         {
             return;
@@ -299,10 +316,12 @@ class Program
         Console.WriteLine($"Let the dance battle between {player.Name} and {opponent.Name} begin!");
 		Console.WriteLine($"The victor is decided when a contestant is ahead by {opponent.PopularityDifference} cheers.");
 		Thread.Sleep(1500);
+
 		// Loops while the battle should be active
         do
         {
 			Console.WriteLine("\n----- Next round -----\n");
+
 			if (player.Popularity > opponent.Popularity)
 			{
 				Console.WriteLine($"{player.Name} is ahead of {opponent.Name} by {player.Popularity - opponent.Popularity}!");
@@ -311,17 +330,21 @@ class Program
 			{
 				Console.WriteLine($"{opponent.Name} is ahead of {player.Name} by {opponent.Popularity - player.Popularity}!");
 			}
-			Thread.Sleep(600);
+            Thread.Sleep(600);
+
             Console.WriteLine($"\n{opponent.Name}'s turn:");
             opponent.PickAction(player);
             Thread.Sleep(600);
+    
             Console.WriteLine($"\n{player.Name}'s turn:");
             ChoosePlayerAction(player, opponent);
             Thread.Sleep(600);
 
+            // Stops the battle if the player has lost due to being noticed by guard
             if (player.Location == "gameover") break;
         } while (GetPositiveDifference(player.Popularity, opponent.Popularity) < opponent.PopularityDifference);
 
+        // Checks if the battle ends without the player being noticed by guard
         if (player.Location != "gameover")
         {
 		    Console.WriteLine("\n-----");
@@ -385,23 +408,19 @@ class Program
     
     static void ObtainShot(Player player)
     {
+        player.Items.Add("Shot");
         if (AskYesOrNo("Do you want to drink the shot? "))
         {
             DrinkShot(player);
         } else
         {
-            player.Items.Add("Shot");
             Console.WriteLine("You gained a shot!");
         }
     }
 
     static void DrinkShot(Player player)
     {
-        if (player.Items.Contains("Shot"))
-        {
-            player.Items.Remove("Shot");
-        }
-
+        player.Items.Remove("Shot");
         player.Courage += 5;
         player.Items.Add("Empty Shot Glass");
         Console.WriteLine("You gained 5 Courage and an empty shot glass!");
