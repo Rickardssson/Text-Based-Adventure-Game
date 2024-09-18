@@ -9,6 +9,7 @@ class Program
         {
             if (player.Location == "newgame")
             {
+                player = new Player();
                 NewGame(player);
             }
 			else if (player.Location == "gameover")
